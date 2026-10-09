@@ -1,0 +1,32 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Датасеты не версионируются: они скачиваются автоматически.
+# Слэш в начале привязывает правило к корню репозитория, иначе оно задело бы
+# и пакет с исходниками src/enmf/data/.
+/data/
+*.zip
+
+# Артефакты запусков. В репозиторий попадают только итоговые запуски, на
+# которых построен отчёт (конфиг, метрики, статистика разбиения, логи
+# TensorBoard, модель основного запуска). Промежуточные прогоны сетки
+# гиперпараметров игнорируются: их итог -- в reports/experiments.*.
+/runs/*
+!/runs/enmf_ml1m/
+!/runs/enmf_ml1m_per_user/
+!/runs/enmf_ddp1/
+!/runs/enmf_ddp2/
+!/runs/enmf_ddp4/
+*.pt
+!/runs/enmf_ml1m/best_model.pt
+!/runs/enmf_ml1m_per_user/best_model.pt
+
+.idea/
+.vscode/
+.DS_Store

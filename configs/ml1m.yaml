@@ -1,0 +1,54 @@
+# Основной эксперимент: MovieLens-1M, user-based ENMF.
+#
+# Выбор user-based варианта продиктован заданием: пользователей (6040) больше,
+# чем объектов (~3700), поэтому батчи формируются по пользователям.
+
+data:
+  dataset: ml-1m
+  data_dir: data
+  binarize_threshold: 0.0      # любая оценка = положительное взаимодействие
+  min_user_interactions: 5
+  min_item_interactions: 5
+  split_strategy: global       # единая точка отсечения по времени, см. отчёт, раздел 3.2;
+                               # per_user -- дополнительный эксперимент:
+                               # --set data.split_strategy=per_user
+  val_ratio: 0.2
+  max_history: null
+
+model:
+  embedding_dim: 64
+  dropout: 0.3
+  init_std: 0.01
+
+loss:
+  pos_weight: 1.0
+  neg_weight: 1.0              # главный гиперпараметр ENMF; подобран по сетке
+                               # (reports/experiments.md), отчёт, раздел 4.2
+  l2_reg: 0.0
+
+train:
+  epochs: 100
+  batch_size: 256
+  lr: 0.05
+  weight_decay: 0.0
+  num_workers: 0
+  eval_every: 1
+  early_stopping_patience: 10
+  early_stopping_metric: ndcg@10
+  seed: 42
+  device: auto
+  ddp_backend: auto
+  grad_clip: 0.0
+
+eval:
+  ks: [5, 10, 20]
+  batch_size: 512
+  item_knn: true                 # второй бейзлайн; настройки подобраны по валидации
+  item_knn_shrinkage: 20000.0    # scripts/tune_item_knn.py, отчёт, раздел 4.7
+  item_knn_aggregation: sum
+
+output:
+  run_name: enmf_ml1m
+  output_dir: runs
+  tensorboard: true
+  save_checkpoint: true

@@ -1,0 +1,6 @@
+torch>=2.2,<3.0
+numpy>=1.26
+pandas>=2.1
+PyYAML>=6.0
+tensorboard>=2.15
+pytest>=7.4

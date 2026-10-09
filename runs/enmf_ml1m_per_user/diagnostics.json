@@ -1,0 +1,16 @@
+{
+  "run": "runs/enmf_ml1m_per_user",
+  "checkpoint_epoch": 32,
+  "embedding_dim": 64,
+  "h_norm": 4.189376354217529,
+  "h_positive_components": 35,
+  "user_embedding_median_norm": 0.4919222593307495,
+  "item_embedding_median_norm": 0.7664307951927185,
+  "user_embedding_effective_rank": 64,
+  "item_embedding_effective_rank": 64,
+  "score_std_over_catalogue_median": 0.0660708025097847,
+  "n_items": 3416,
+  "unique_items_in_top10_enmf": 808,
+  "unique_items_in_top10_popularity": 118,
+  "corr_mean_item_score_vs_popularity": 0.9990540314286959
+}

@@ -1,0 +1,23 @@
+{
+  "dataset": "ml-1m",
+  "data_dir": "data",
+  "binarize_threshold": 0.0,
+  "min_user_interactions": 5,
+  "min_item_interactions": 5,
+  "split_strategy": "global",
+  "val_ratio": 0.2,
+  "max_history": null,
+  "strategy": "global",
+  "n_train": 799687,
+  "n_val_raw": 199924,
+  "n_val_kept": 104411,
+  "n_users_total": 6040,
+  "n_users_in_train": 5400,
+  "n_val_users_raw": 1783,
+  "n_val_users_kept": 1143,
+  "n_items_in_train": 3411,
+  "cutoff_timestamp": 975768294,
+  "dropped_cold_users": 640,
+  "dropped_cold_items": 5,
+  "val_user_coverage": 0.641054402692092
+}
